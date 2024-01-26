@@ -1,0 +1,56 @@
+// Classe Livro
+class Livro {
+  constructor(id, titulo, autor, editora, anoPublicacao) {
+    this.id = id;
+    this.titulo = titulo;
+    this.autor = autor;
+    this.editora = editora;
+    this.anoPublicacao = anoPublicacao;
+  }
+}
+
+// Função para adicionar um livro à biblioteca
+function adicionarLivro(biblioteca, livro) {
+  biblioteca.push(livro);
+  console.log("Livro adicionado à biblioteca: " + livro.titulo);
+}
+
+// Função para buscar um livro pelo título
+function buscarLivroPorTitulo(biblioteca, titulo) {
+  const livroEncontrado = biblioteca.find(livro => livro.titulo === titulo);
+  if (livroEncontrado) {
+    console.log("Livro encontrado: " + livroEncontrado.titulo);
+  } else {
+    console.log("Livro não encontrado");
+  }
+}
+
+// Função para remover um livro pelo ID
+function removerLivroPorId(biblioteca, id) {
+  const index = biblioteca.findIndex(livro => livro.id === id);
+  if (index !== -1) {
+    const livroRemovido = biblioteca.splice(index, 1)[0];
+    console.log("Livro removido da biblioteca: " + livroRemovido.titulo);
+  } else {
+    console.log("Livro não encontrado");
+  }
+}
+
+// Exemplo de uso do sistema de gerenciamento de biblioteca
+const biblioteca = [];
+
+// Adicionando livros à biblioteca
+const livro1 = new Livro(1, "Dom Quixote", "Miguel de Cervantes", "Editora A", 1605);
+adicionarLivro(biblioteca, livro1);
+
+const livro2 = new Livro(2, "1984", "George Orwell", "Editora B", 1949);
+adicionarLivro(biblioteca, livro2);
+
+// Buscando um livro pelo título
+buscarLivroPorTitulo(biblioteca, "1984"); // Livro encontrado: 1984
+
+// Removendo um livro pelo ID
+removerLivroPorId(biblioteca, 1); // Livro removido da biblioteca: Dom Quixote
+
+// Exibindo a biblioteca atualizada
+console.log(biblioteca);
